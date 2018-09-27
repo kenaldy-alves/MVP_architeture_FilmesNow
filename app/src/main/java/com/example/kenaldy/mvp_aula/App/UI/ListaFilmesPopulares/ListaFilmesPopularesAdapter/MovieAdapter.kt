@@ -1,0 +1,47 @@
+package com.example.kenaldy.mvp_aula.App.UI.ListaFilmesPopulares.ListaFilmesPopularesAdapter
+
+import android.content.Context
+import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
+import com.example.kenaldy.mvp_aula.App.UI.FilmesHome.FilmesHomeActivity
+import com.example.kenaldy.mvp_aula.R
+import com.squareup.picasso.Picasso
+
+class MovieAdapter(): RecyclerView.Adapter<MovieViewHolder>() {
+    var newListMovie : List<Movie>? = null
+    lateinit var context: Context
+
+    fun setNewListMovies(movies: List<Movie>, context: Context){
+        this.newListMovie = movies
+        this.context = context
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): MovieViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.lista_filmes_recycler_view, parent, false)
+        return MovieViewHolder(view)
+    }
+
+    override fun getItemCount(): Int {
+        if(newListMovie?.size  == null)
+            return 0
+        else
+           return newListMovie?.size!!
+    }
+
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        val lista = newListMovie
+
+        holder?.let {
+            it.title.text = lista!![position].title
+            Picasso.get().load("https://image.tmdb.org/t/p/w500/" + lista[position].poster_path).into(it.imageFilme)
+            it.cardView.setOnClickListener{
+                if(context is FilmesHomeActivity){
+                    (context as FilmesHomeActivity).navigation(lista[position])
+                }
+            }
+        }
+    }
+}
