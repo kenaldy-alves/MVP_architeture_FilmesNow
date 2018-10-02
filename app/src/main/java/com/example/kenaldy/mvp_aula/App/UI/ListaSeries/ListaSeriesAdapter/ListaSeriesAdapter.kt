@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Serie
-import com.example.kenaldy.mvp_aula.App.UI.FilmesHome.FilmesHomeActivity
+import com.example.kenaldy.mvp_aula.App.UI.Home.HomeActivity
 import com.example.kenaldy.mvp_aula.R
 import com.squareup.picasso.Picasso
 
@@ -37,11 +37,11 @@ class ListaSeriesAdapter(): RecyclerView.Adapter<ListaSeriesViewHolder>() {
     override fun onBindViewHolder(holder: ListaSeriesViewHolder, position: Int) {
         val list = newListSerie
 
-        holderi.let {
-            it.titleSerie.text = list!![position].title
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/" + list[position].poster_path).into(it.imageSerie)
+        holder.let {
+            Picasso.get().load("https://image.tmdb.org/t/p/w500/" + list!![position].poster_path).into(it.imageSerie)
             it.cardViewSeries.setOnClickListener{
-                if(context is FilmesHomeActivity){
+                if(context is HomeActivity){
+                    (context as HomeActivity).navigationSerieDetails(list[position])
                 }
             }
         }

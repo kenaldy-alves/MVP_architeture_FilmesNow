@@ -5,7 +5,6 @@ import com.example.kenaldy.mvp_aula.App.Data.Objects.Serie
 interface MVP_ListaSeriesContract {
     interface ListaSeriesView{
         fun mostraErro()
-        fun mostraErro3()
         fun mostraSeries(series: List<Serie>)
     }
 

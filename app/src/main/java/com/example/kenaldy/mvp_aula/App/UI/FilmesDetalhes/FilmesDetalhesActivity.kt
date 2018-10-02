@@ -57,7 +57,7 @@ class FilmesDetalhesActivity : AppCompatActivity(), mvpContractDetailsMovie.Movi
     }
 
     override fun mostraErro() {
-        Toast.makeText(this,"Erro!!! Falha na obtenção da lista 2222", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Erro!!! Falha na obtenção da lista ", Toast.LENGTH_SHORT).show()
     }
 
 }

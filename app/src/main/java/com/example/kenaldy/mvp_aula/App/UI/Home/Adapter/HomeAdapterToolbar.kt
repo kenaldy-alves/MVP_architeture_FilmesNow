@@ -1,11 +1,11 @@
-package com.example.kenaldy.mvp_aula.App.UI.FilmesHome
+package com.example.kenaldy.mvp_aula.App.UI.Home.Adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
 import com.example.kenaldy.mvp_aula.App.UI.ListaFilmesPopulares.ListaFilmesPopularesFragment
 import com.example.kenaldy.mvp_aula.App.UI.ListaSeries.ListaSeriesFragment
 
-class FilmesHomeAdapterToolbar(fragment: android.support.v4.app.FragmentManager): FragmentPagerAdapter(fragment) {
+class HomeAdapterToolbar(fragment: android.support.v4.app.FragmentManager): FragmentPagerAdapter(fragment) {
     private val tabNames : ArrayList<String> = ArrayList()
     private val fragment : ArrayList<Fragment> = ArrayList()
 

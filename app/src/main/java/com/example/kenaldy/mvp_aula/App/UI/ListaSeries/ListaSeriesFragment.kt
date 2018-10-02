@@ -3,6 +3,7 @@ package com.example.kenaldy.mvp_aula.App.UI.ListaSeries
 
 import android.arch.lifecycle.Observer
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
@@ -13,7 +14,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Serie
+import com.example.kenaldy.mvp_aula.App.UI.FilmesDetalhes.FilmesDetalhesActivity
 import com.example.kenaldy.mvp_aula.App.UI.ListaFilmesPopulares.ListaFilmesPopularesAdapter.MovieAdapter
 import com.example.kenaldy.mvp_aula.App.UI.ListaSeries.ListaSeriesAdapter.ListaSeriesAdapter
 
@@ -73,10 +76,6 @@ class ListaSeriesFragment : Fragment(), MVP_ListaSeriesContract.ListaSeriesView 
 
     override fun mostraErro() {
         Toast.makeText(contextFragment,"Erro!!! Falha na obtenção da lista", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun mostraErro3() {
-        Toast.makeText(contextFragment,"Erro!!! Resposta Nula", Toast.LENGTH_SHORT).show()
     }
 
 }

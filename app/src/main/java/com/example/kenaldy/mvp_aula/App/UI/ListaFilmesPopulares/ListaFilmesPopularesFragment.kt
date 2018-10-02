@@ -3,6 +3,7 @@ package com.example.kenaldy.mvp_aula.App.UI.ListaFilmesPopulares
 
 import android.arch.lifecycle.Observer
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.StaggeredGridLayoutManager
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
+import com.example.kenaldy.mvp_aula.App.UI.FilmesDetalhes.FilmesDetalhesActivity
 import com.example.kenaldy.mvp_aula.App.UI.ListaFilmesPopulares.ListaFilmesPopularesAdapter.MovieAdapter
 import com.example.kenaldy.mvp_aula.R
 import kotlinx.android.synthetic.main.activity_main.*

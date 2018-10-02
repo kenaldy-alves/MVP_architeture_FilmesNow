@@ -7,6 +7,5 @@ import kotlinx.android.synthetic.main.lista_filmes_recycler_view.view.*
 
 class ListaSeriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     val imageSerie = itemView.imagemSeries
-    val titleSerie = itemView.tituloSeries
     val cardViewSeries = itemView.cardView_series
 }

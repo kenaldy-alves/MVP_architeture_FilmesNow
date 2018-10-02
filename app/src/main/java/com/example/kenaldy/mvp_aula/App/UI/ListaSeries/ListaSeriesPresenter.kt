@@ -35,17 +35,16 @@ class ListaSeriesPresenter(private var view: MVP_ListaSeriesContract.ListaSeries
                     if (response.isSuccessful)
                         response.body()?.let {
                             val newMovieList: JsonResponseSeries = it
-                            Log.e("teste", newMovieList.results[0].original_name)
                             val list: ArrayList<Serie>? = SerieMapper().mapperSerie(newMovieList.results)
                             view?.mostraSeries(list!!)
                         }
                     else
-                        view?.mostraErro3()
+                        view?.mostraErro()
 
                 }
                 else{
                     showProgressBar.value = false
-                    view?.mostraErro3()
+                    view?.mostraErro()
                 }
             }
         })

@@ -1,4 +1,4 @@
-package com.example.kenaldy.mvp_aula.App.UI.FilmesHome
+package com.example.kenaldy.mvp_aula.App.UI.Home.Adapter
 
 import android.support.v4.app.Fragment
 import android.os.Bundle
@@ -10,13 +10,13 @@ import com.example.kenaldy.mvp_aula.R
 /**
  * A placeholder fragment containing a simple view.
  */
-class FilmesHomeActivityFragment : Fragment() {
+class HomeActivityFragment : Fragment() {
 
     companion object {
         val NUM_PAGES = "NUM_PAGES"
 
-        fun newInstance(page: Int): FilmesHomeActivityFragment {
-            val fragment = FilmesHomeActivityFragment()
+        fun newInstance(page: Int): HomeActivityFragment {
+            val fragment = HomeActivityFragment()
             val args = Bundle()
             args.putInt(NUM_PAGES, page)
             fragment.arguments = args
