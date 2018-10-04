@@ -28,7 +28,7 @@ class FilmesDetalhesActivity : AppCompatActivity(), mvpContractDetailsMovie.Movi
         }
 
         val presenter = FilmesDetalhesPresenter(this)
-        presenter.getMovieDetailsRequisition(movie.id)
+        presenter.getMovieDetailsRequisition(movie.id!!)
 
         presenter.showProgressBar.observe(this, object: Observer<Boolean> {
             override fun onChanged(showProgressbar: Boolean?) {

@@ -1,9 +1,9 @@
 package com.example.kenaldy.mvp_aula.App.UI.ListaSeries
 
 import android.arch.lifecycle.MutableLiveData
-import android.util.Log
+import com.example.kenaldy.mvp_aula.App.Data.CRUD
 import com.example.kenaldy.mvp_aula.App.Data.Mapper.SerieMapper
-import com.example.kenaldy.mvp_aula.App.Data.Objects.Serie
+import com.example.kenaldy.mvp_aula.App.Data.Objects.Series.Serie
 import com.example.kenaldy.mvp_aula.App.Data.Response.Series.JsonResponseSeries
 import com.example.kenaldy.mvp_aula.App.Data.Retrofit.RetrofitInializer
 import retrofit2.Call
@@ -26,7 +26,7 @@ class ListaSeriesPresenter(private var view: MVP_ListaSeriesContract.ListaSeries
         call.enqueue(object: Callback<JsonResponseSeries>{
             override fun onFailure(call: Call<JsonResponseSeries>?, t: Throwable?) {
                 showProgressBar.value = false
-                view?.mostraErro()
+                //view?.mostraErro()
             }
 
             override fun onResponse(call: Call<JsonResponseSeries>?, response: Response<JsonResponseSeries>?) {
@@ -38,13 +38,13 @@ class ListaSeriesPresenter(private var view: MVP_ListaSeriesContract.ListaSeries
                             val list: ArrayList<Serie>? = SerieMapper().mapperSerie(newMovieList.results)
                             view?.mostraSeries(list!!)
                         }
-                    else
-                        view?.mostraErro()
+                    //else
+                        //view?.mostraErro()
 
                 }
                 else{
                     showProgressBar.value = false
-                    view?.mostraErro()
+                    //view?.mostraErro()
                 }
             }
         })

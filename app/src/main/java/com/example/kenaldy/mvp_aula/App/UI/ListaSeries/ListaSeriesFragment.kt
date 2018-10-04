@@ -3,27 +3,18 @@ package com.example.kenaldy.mvp_aula.App.UI.ListaSeries
 
 import android.arch.lifecycle.Observer
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.widget.StaggeredGridLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
-import com.example.kenaldy.mvp_aula.App.Data.Objects.Serie
-import com.example.kenaldy.mvp_aula.App.UI.FilmesDetalhes.FilmesDetalhesActivity
-import com.example.kenaldy.mvp_aula.App.UI.ListaFilmesPopulares.ListaFilmesPopularesAdapter.MovieAdapter
+import com.example.kenaldy.mvp_aula.App.Data.Objects.Series.Serie
 import com.example.kenaldy.mvp_aula.App.UI.ListaSeries.ListaSeriesAdapter.ListaSeriesAdapter
 
 import com.example.kenaldy.mvp_aula.R
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_series_main.*
-import java.util.*
 
 class ListaSeriesFragment : Fragment(), MVP_ListaSeriesContract.ListaSeriesView {
 

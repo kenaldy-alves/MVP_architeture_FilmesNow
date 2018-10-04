@@ -1,6 +1,8 @@
 package com.example.kenaldy.mvp_aula.App.UI.ListaFilmesPopulares
 
 import android.arch.lifecycle.MutableLiveData
+import android.util.Log
+import com.example.kenaldy.mvp_aula.App.Data.CRUD
 import com.example.kenaldy.mvp_aula.App.Data.Mapper.MovieMapper
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
 import com.example.kenaldy.mvp_aula.App.Data.Response.Movie.JsonResponseMoviePopular
@@ -29,7 +31,7 @@ class ListaFilmesPopularesPresenter(private var view: MVP_Contract.ListaFilmesPo
         call.enqueue( object: Callback<JsonResponseMoviePopular> {
             override fun onFailure(call: Call<JsonResponseMoviePopular>?, t: Throwable?) {
                 showProgressBar.value = false
-                view?.mostraErro()
+                view?.mostraFilmes(CRUD().mostraFilmesDB())
             }
 
             override fun onResponse(call: Call<JsonResponseMoviePopular>?, response: Response<JsonResponseMoviePopular>?) {

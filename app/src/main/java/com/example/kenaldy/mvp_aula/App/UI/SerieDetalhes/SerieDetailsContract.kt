@@ -1,6 +1,6 @@
 package com.example.kenaldy.mvp_aula.App.UI.SerieDetalhes
 
-import com.example.kenaldy.mvp_aula.App.Data.Objects.Serie
+import com.example.kenaldy.mvp_aula.App.Data.Objects.Series.Serie
 
 
 interface SerieDetailsContract {

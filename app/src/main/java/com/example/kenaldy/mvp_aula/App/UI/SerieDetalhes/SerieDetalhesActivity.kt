@@ -2,15 +2,12 @@ package com.example.kenaldy.mvp_aula.App.UI.SerieDetalhes
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
-import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
-import com.example.kenaldy.mvp_aula.App.Data.Objects.Serie
+import com.example.kenaldy.mvp_aula.App.Data.Objects.Series.Serie
 import com.example.kenaldy.mvp_aula.R
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_filmes_detalhes.*
 import kotlinx.android.synthetic.main.activity_filmes_home.*
 
 import kotlinx.android.synthetic.main.activity_serie_detalhes.*

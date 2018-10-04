@@ -1,9 +1,18 @@
 package com.example.kenaldy.mvp_aula.App.UI.Home
 
+import android.content.Context
+import com.example.kenaldy.mvp_aula.App.Data.Objects.MovieDB
 import com.example.kenaldy.mvp_aula.App.UI.Home.Adapter.HomeActivityFragment
 import com.example.kenaldy.mvp_aula.App.UI.Home.Adapter.HomeAdapterToolbar
+import io.realm.Realm
+import io.realm.RealmConfiguration
+import io.realm.kotlin.createObject
 
 class HomeActivityPresenter(private var view: HomeContractActivity.HomeActivityView, private var pageAdapter: HomeAdapterToolbar): HomeContractActivity.HomeActivityPresenter {
+    override fun configureDataBase(context: Context) {
+        Realm.init(context)
+    }
+
     override fun setView(view: HomeContractActivity.HomeActivityView) {
         this.view = view
     }

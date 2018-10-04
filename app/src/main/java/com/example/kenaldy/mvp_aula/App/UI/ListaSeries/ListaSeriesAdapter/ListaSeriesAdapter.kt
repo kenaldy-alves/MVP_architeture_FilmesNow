@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.kenaldy.mvp_aula.App.Data.Objects.Serie
+import com.example.kenaldy.mvp_aula.App.Data.Objects.Series.Serie
 import com.example.kenaldy.mvp_aula.App.UI.Home.HomeActivity
 import com.example.kenaldy.mvp_aula.R
 import com.squareup.picasso.Picasso
@@ -17,8 +17,6 @@ class ListaSeriesAdapter(): RecyclerView.Adapter<ListaSeriesViewHolder>() {
     fun setNewListMovies(series: List<Serie>, context: Context){
         this.newListSerie = series
         this.context = context
-
-        Log.e("olawww--->", series[0].title)
         notifyDataSetChanged()
     }
 

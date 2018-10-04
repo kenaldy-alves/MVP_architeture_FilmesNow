@@ -1,4 +1,4 @@
-package com.example.kenaldy.mvp_aula.App.Data.Objects
+package com.example.kenaldy.mvp_aula.App.Data.Objects.Series
 
 import java.io.Serializable
 

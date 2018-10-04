@@ -1,7 +1,6 @@
 package com.example.kenaldy.mvp_aula.App.Data.Mapper
 
-import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
-import com.example.kenaldy.mvp_aula.App.Data.Objects.Serie
+import com.example.kenaldy.mvp_aula.App.Data.Objects.Series.Serie
 import com.example.kenaldy.mvp_aula.App.Data.Response.Series.JsonResponseSerieDetails
 
 class SerieDetailsMapper {

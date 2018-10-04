@@ -1,11 +1,8 @@
 package com.example.kenaldy.mvp_aula.App.UI.SerieDetalhes
 
 import android.arch.lifecycle.MutableLiveData
-import com.example.kenaldy.mvp_aula.App.Data.Mapper.MovieDetailsMapper
 import com.example.kenaldy.mvp_aula.App.Data.Mapper.SerieDetailsMapper
-import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
-import com.example.kenaldy.mvp_aula.App.Data.Objects.Serie
-import com.example.kenaldy.mvp_aula.App.Data.Response.Movie.JsonResponseMovieDetails
+import com.example.kenaldy.mvp_aula.App.Data.Objects.Series.Serie
 import com.example.kenaldy.mvp_aula.App.Data.Response.Series.JsonResponseSerieDetails
 import com.example.kenaldy.mvp_aula.App.Data.Retrofit.RetrofitInializer
 import retrofit2.Call
