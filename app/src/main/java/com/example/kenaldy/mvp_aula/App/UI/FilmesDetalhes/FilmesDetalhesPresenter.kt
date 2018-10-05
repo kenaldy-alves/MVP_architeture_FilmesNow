@@ -1,7 +1,7 @@
 package com.example.kenaldy.mvp_aula.App.UI.FilmesDetalhes
 
 import android.arch.lifecycle.MutableLiveData
-import com.example.kenaldy.mvp_aula.App.Data.CRUD
+import com.example.kenaldy.mvp_aula.App.Data.movieCRUD
 import com.example.kenaldy.mvp_aula.App.Data.Mapper.MovieDetailsMapper
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
 import com.example.kenaldy.mvp_aula.App.Data.Response.Movie.JsonResponseMovieDetails
@@ -27,8 +27,7 @@ class FilmesDetalhesPresenter(private var view: mvpContractDetailsMovie.MovieDet
         call.enqueue(object: Callback<JsonResponseMovieDetails>{
             override fun onFailure(call: Call<JsonResponseMovieDetails>?, t: Throwable?) {
                 showProgressBar.value = false
-
-                view?.mostraFilmes(CRUD().mostraFilmeDetalhe(id_Movie))
+                view?.mostraFilmes(movieCRUD().mostraFilmeDetalhe(id_Movie))
             }
 
             override fun onResponse(call: Call<JsonResponseMovieDetails>?, response: Response<JsonResponseMovieDetails>?) {
@@ -42,7 +41,7 @@ class FilmesDetalhesPresenter(private var view: mvpContractDetailsMovie.MovieDet
                         }
                 }
                 else
-                    view?.mostraFilmes(CRUD().mostraFilmeDetalhe(id_Movie))
+                    view?.mostraFilmes(movieCRUD().mostraFilmeDetalhe(id_Movie))
             }
 
         })

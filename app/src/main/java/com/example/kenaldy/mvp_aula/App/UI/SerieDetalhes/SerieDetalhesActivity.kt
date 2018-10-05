@@ -2,6 +2,7 @@ package com.example.kenaldy.mvp_aula.App.UI.SerieDetalhes
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
@@ -9,8 +10,10 @@ import com.example.kenaldy.mvp_aula.App.Data.Objects.Series.Serie
 import com.example.kenaldy.mvp_aula.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_filmes_home.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 import kotlinx.android.synthetic.main.activity_serie_detalhes.*
+import kotlinx.android.synthetic.main.fragment_filmes_home.*
 
 class SerieDetalhesActivity : AppCompatActivity(), SerieDetailsContract.SerieDetalhesView {
     private val KEY_SERIE : String = "serie"
@@ -28,7 +31,7 @@ class SerieDetalhesActivity : AppCompatActivity(), SerieDetailsContract.SerieDet
         }
 
         val presenter = SerieDetalhesPresenter(this)
-        presenter.getSerieDetailRequisition(serie.id)
+        presenter.getSerieDetailRequisition(serie.id!!)
 
         presenter.showProgressBar.observe(this, object: Observer<Boolean> {
             override fun onChanged(showProgressbar: Boolean?) {
@@ -54,7 +57,6 @@ class SerieDetalhesActivity : AppCompatActivity(), SerieDetailsContract.SerieDet
     }
 
     override fun mostraSerie(serie: Serie) {
-
         titulo_serie_detalhes.text = serie.title
         descricao_serie.text = serie.overview
         Picasso.get().load("https://image.tmdb.org/t/p/w500/" + serie.poster_path).into(imageView_serie_detalhes)

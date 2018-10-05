@@ -1,20 +1,20 @@
 package com.example.kenaldy.mvp_aula.App.Data.Mapper
 
 import android.util.Log
-import com.example.kenaldy.mvp_aula.App.Data.CRUD
-import com.example.kenaldy.mvp_aula.App.Data.Objects.MovieDB
+import com.example.kenaldy.mvp_aula.App.Data.movieCRUD
+import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.MovieDB
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
 import com.example.kenaldy.mvp_aula.App.Data.Response.Movie.MovieResult
 import io.realm.RealmResults
 
 class MovieMapper {
     fun mapperMovie(listMovie: List<MovieResult>): ArrayList<Movie>? {
-        CRUD().deleteFilmeDataBase()
         var movieList: ArrayList<Movie> = ArrayList()
+        movieCRUD().deleteFilmeDataBase()
 
         for (lista in listMovie){
             val filme = Movie(lista.id, lista.original_title, lista.overview, lista.poster_path)
-            CRUD().addFilmeDataBase(filme)
+            movieCRUD().addFilmeDataBase(filme)
             movieList?.add(filme)
         }
         return movieList

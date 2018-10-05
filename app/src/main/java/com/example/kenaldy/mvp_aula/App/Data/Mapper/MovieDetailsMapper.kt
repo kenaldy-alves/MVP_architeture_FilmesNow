@@ -1,6 +1,6 @@
 package com.example.kenaldy.mvp_aula.App.Data.Mapper
 
-import com.example.kenaldy.mvp_aula.App.Data.Objects.MovieDB
+import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.MovieDB
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
 import com.example.kenaldy.mvp_aula.App.Data.Response.Movie.JsonResponseMovieDetails
 import io.realm.RealmResults

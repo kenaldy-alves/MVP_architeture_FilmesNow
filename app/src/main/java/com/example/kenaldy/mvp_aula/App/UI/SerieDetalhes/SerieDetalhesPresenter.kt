@@ -5,6 +5,7 @@ import com.example.kenaldy.mvp_aula.App.Data.Mapper.SerieDetailsMapper
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Series.Serie
 import com.example.kenaldy.mvp_aula.App.Data.Response.Series.JsonResponseSerieDetails
 import com.example.kenaldy.mvp_aula.App.Data.Retrofit.RetrofitInializer
+import com.example.kenaldy.mvp_aula.App.Data.serieCRUD
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,7 +26,7 @@ class SerieDetalhesPresenter(private var view: SerieDetailsContract.SerieDetalhe
         call.enqueue(object: Callback<JsonResponseSerieDetails> {
             override fun onFailure(call: Call<JsonResponseSerieDetails>?, t: Throwable?) {
                 showProgressBar.value = false
-                view?.mostraErro()
+                view?.mostraSerie(serieCRUD().mostraSerieDetalhe(id))
             }
 
             override fun onResponse(call: Call<JsonResponseSerieDetails>?, response: Response<JsonResponseSerieDetails>?) {
@@ -39,7 +40,7 @@ class SerieDetalhesPresenter(private var view: SerieDetailsContract.SerieDetalhe
                         }
                 }
                 else
-                    view.mostraErro()
+                    view?.mostraSerie(serieCRUD().mostraSerieDetalhe(id))
             }
 
         })

@@ -1,8 +1,7 @@
 package com.example.kenaldy.mvp_aula.App.UI.ListaFilmesPopulares
 
 import android.arch.lifecycle.MutableLiveData
-import android.util.Log
-import com.example.kenaldy.mvp_aula.App.Data.CRUD
+import com.example.kenaldy.mvp_aula.App.Data.movieCRUD
 import com.example.kenaldy.mvp_aula.App.Data.Mapper.MovieMapper
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
 import com.example.kenaldy.mvp_aula.App.Data.Response.Movie.JsonResponseMoviePopular
@@ -14,10 +13,6 @@ import retrofit2.Response
 class ListaFilmesPopularesPresenter(private var view: MVP_Contract.ListaFilmesPopularesView?) : MVP_Contract.ListaFilmesPopularesPresenter {
 
     var showProgressBar: MutableLiveData<Boolean> = MutableLiveData()
-
-    override fun refresh() {
-        getMoviePopularRequisition()
-    }
 
     override fun setView(view: MVP_Contract.ListaFilmesPopularesView) {
         this.view = view
@@ -31,7 +26,8 @@ class ListaFilmesPopularesPresenter(private var view: MVP_Contract.ListaFilmesPo
         call.enqueue( object: Callback<JsonResponseMoviePopular> {
             override fun onFailure(call: Call<JsonResponseMoviePopular>?, t: Throwable?) {
                 showProgressBar.value = false
-                view?.mostraFilmes(CRUD().mostraFilmesDB())
+                view?.mostraFilmes(movieCRUD().mostraFilmesDB())
+                view?.mostraErroConexao()
             }
 
             override fun onResponse(call: Call<JsonResponseMoviePopular>?, response: Response<JsonResponseMoviePopular>?) {

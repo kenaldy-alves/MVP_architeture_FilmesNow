@@ -5,7 +5,9 @@ import android.arch.lifecycle.Observer
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -19,14 +21,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class ListaFilmesPopularesFragment : Fragment(), MVP_Contract.ListaFilmesPopularesView  {
+
     private lateinit var filmesAdapter: MovieAdapter
     private lateinit var context2 : Context
+    private val presenter = ListaFilmesPopularesPresenter(this)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         this.context2 = context
     }
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -36,10 +39,22 @@ class ListaFilmesPopularesFragment : Fragment(), MVP_Contract.ListaFilmesPopular
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         configureAdapter()
+    }
 
-        val presenter = ListaFilmesPopularesPresenter(this)
+    override fun onResume() {
+        super.onResume()
         presenter.getMoviePopularRequisition()
+        configureProgressBar()
 
+        swipe_refresh.setOnRefreshListener (object : SwipeRefreshLayout.OnRefreshListener{
+            override fun onRefresh() {
+                presenter.getMoviePopularRequisition()
+            }
+        })
+    }
+
+
+    private fun configureProgressBar() {
         presenter.showProgressBar.observe(this, object: Observer<Boolean> {
             override fun onChanged(showProgressbar: Boolean?) {
                 if(showProgressbar?:false){
@@ -49,14 +64,12 @@ class ListaFilmesPopularesFragment : Fragment(), MVP_Contract.ListaFilmesPopular
                     progressBar.visibility = View.GONE
                 }
             }
-
         })
-
     }
-
 
     override fun mostraFilmes(filmes: List<Movie>) {
         filmesAdapter.setNewListMovies(filmes,context2)
+        swipe_refresh.isRefreshing = false
     }
 
     override fun mostraErro() {
@@ -70,6 +83,10 @@ class ListaFilmesPopularesFragment : Fragment(), MVP_Contract.ListaFilmesPopular
         filmesAdapter = MovieAdapter()
         recyclerFilmes.adapter = filmesAdapter
         recyclerFilmes.layoutManager = layoutManager
+    }
+
+    override fun mostraErroConexao() {
+        Snackbar.make(minha_recyclerView, "Sem conexão",Snackbar.LENGTH_SHORT).show()
     }
 
 }
