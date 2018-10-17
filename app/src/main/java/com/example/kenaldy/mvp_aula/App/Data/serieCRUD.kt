@@ -7,6 +7,7 @@ import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.MovieDB
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Series.SerieDB
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Series.Serie
+import com.squareup.picasso.Picasso
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
@@ -19,9 +20,10 @@ class serieCRUD {
         val realm = Realm.getInstance(config)
 
         realm.beginTransaction()
-        val serieDB = realm.createObject(SerieDB::class.java, serie.id)
-        serieDB.title = serie.title
-        serieDB.overview = serie.overview
+            val serieDB = realm.createObject(SerieDB::class.java, serie.id)
+            serieDB.title = serie.title
+            serieDB.overview = serie.overview
+            serieDB.poster_path = serie.poster_path
         realm.commitTransaction()
 
     }

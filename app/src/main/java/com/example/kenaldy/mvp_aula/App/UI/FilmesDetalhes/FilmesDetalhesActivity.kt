@@ -2,11 +2,13 @@ package com.example.kenaldy.mvp_aula.App.UI.FilmesDetalhes
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
+import com.example.kenaldy.mvp_aula.App.Data.movieCRUD
 import com.example.kenaldy.mvp_aula.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_filmes_detalhes.*
@@ -30,17 +32,7 @@ class FilmesDetalhesActivity : AppCompatActivity(), mvpContractDetailsMovie.Movi
         }
 
         presenter.getMovieDetailsRequisition(movie.id!!)
-
-        presenter.showProgressBar.observe(this, object : Observer<Boolean> {
-            override fun onChanged(showprogressBar: Boolean?) {
-                if(showprogressBar?:false){
-                    details_progressBar.visibility = View.VISIBLE
-                }
-                else{
-                    details_progressBar.visibility = View.GONE
-                }
-            }
-        })
+        configureProgressBar()
     }
 
     fun configureToolbar(){
@@ -52,10 +44,31 @@ class FilmesDetalhesActivity : AppCompatActivity(), mvpContractDetailsMovie.Movi
         titulo_filmes_detalhes.text = filme.title
         descricao.text = filme.overview
         Picasso.get().load("https://image.tmdb.org/t/p/w500/" + filme.poster_path).into(imageView_filme_detalhes)
+
+
+        fab.setOnClickListener{
+            if(movieCRUD().addFavoritosDataBase(filme))
+                Snackbar.make(container, "Filme adicionado aos favoritos!!", Snackbar.LENGTH_SHORT).show()
+            else
+                Snackbar.make(container, "Este filme já foi adicionado aos favoritos!!!", Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     override fun mostraErro() {
         Toast.makeText(this,"Erro!!! Falha na obtenção da lista ", Toast.LENGTH_SHORT).show()
     }
 
+
+    private fun configureProgressBar() {
+        presenter.showProgressBar.observe(this, object : Observer<Boolean> {
+            override fun onChanged(showprogressBar: Boolean?) {
+                if(showprogressBar?:false){
+                    details_progressBar.visibility = View.VISIBLE
+                }
+                else{
+                    details_progressBar.visibility = View.GONE
+                }
+            }
+        })
+    }
 }

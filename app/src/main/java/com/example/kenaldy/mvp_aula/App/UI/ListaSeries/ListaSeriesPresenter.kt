@@ -27,7 +27,6 @@ class ListaSeriesPresenter(private var view: MVP_ListaSeriesContract.ListaSeries
             override fun onFailure(call: Call<JsonResponseSeries>?, t: Throwable?) {
                 showProgressBar.value = false
                 view?.mostraSeries(serieCRUD().mostraSerieDB())
-                view?.mostraErroConexao()
             }
 
             override fun onResponse(call: Call<JsonResponseSeries>?, response: Response<JsonResponseSeries>?) {

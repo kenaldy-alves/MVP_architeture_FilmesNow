@@ -11,10 +11,10 @@ open class SerieDB: RealmObject(){
     var id: Int = 0
 
     @Required
-    var title: String? = null
+    var title: String? = " "
 
     @Required
-    var overview: String? = null
+    var overview: String? = " "
 
-    var poster_path: String? = null
+    var poster_path: String? = " "
 }

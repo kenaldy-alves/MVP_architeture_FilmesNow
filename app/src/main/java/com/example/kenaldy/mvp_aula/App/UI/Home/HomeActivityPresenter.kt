@@ -20,6 +20,7 @@ class HomeActivityPresenter(private var view: HomeContractActivity.HomeActivityV
 
         nomesTab.add("Filmes Populares")
         nomesTab.add("Series")
+        nomesTab.add("Favoritos")
 
         for(i in 0 until nomesTab.size) {
             this.pageAdapter.addTab(HomeActivityFragment.newInstance(i), nomesTab[i])

@@ -1,15 +1,18 @@
 package com.example.kenaldy.mvp_aula.App.Data
 
+import android.util.Log
 import com.example.kenaldy.mvp_aula.App.Data.Mapper.MovieDetailsMapper
 import com.example.kenaldy.mvp_aula.App.Data.Mapper.MovieMapper
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.MovieDB
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
+import com.squareup.picasso.Picasso
 import io.realm.Realm
 import io.realm.RealmConfiguration
+import java.io.File
 
 class movieCRUD {
     //---------------------------------------------CREATE------------------------------------------------------------
-    fun addFilmeDataBase(movie: Movie){
+    fun addFilmeDataBase(movie: Movie) {
         val config = RealmConfiguration.Builder()
                 .name("movie.realm")
                 .build()
@@ -17,9 +20,41 @@ class movieCRUD {
 
         realm.beginTransaction()
             val movieDB = realm.createObject(MovieDB::class.java, movie.id)
+            movieDB.title = movie.title
+            movieDB.overview = movie.overview
+            movieDB.poster_path = movie.poster_path
+        realm.commitTransaction()
+    }
+
+
+    fun addFavoritosDataBase(movie: Movie): Boolean {
+        val config = RealmConfiguration.Builder()
+                .name("FilmesFavoritos.realm")
+                .build()
+        val realm = Realm.getInstance(config)
+        val filme = realm.where(MovieDB::class.java).equalTo("id", movie.id).findFirst()
+
+        if (filme == null) {
+            realm.beginTransaction()
+                val movieDB = realm.createObject(MovieDB::class.java, movie.id)
                 movieDB.title = movie.title
                 movieDB.overview = movie.overview
-        realm.commitTransaction()
+                movieDB.poster_path = movie.poster_path
+            realm.commitTransaction()
+            return true
+        }
+        else{
+            if(filme.id != movie.id){
+                realm.beginTransaction()
+                    val movieDB = realm.createObject(MovieDB::class.java, movie.id)
+                    movieDB.title = movie.title
+                    movieDB.overview = movie.overview
+                    movieDB.poster_path = movie.poster_path
+                realm.commitTransaction()
+                return true
+            }
+        }
+        return false
     }
 
     //-------------------------------------------DELETE--------------------------------------------------------------
@@ -30,11 +65,12 @@ class movieCRUD {
         val realm = Realm.getInstance(config)
 
         realm.beginTransaction()
-        val allMovies = realm.where(MovieDB::class.java).findAll()
-        allMovies.deleteAllFromRealm()
+            val allMovies = realm.where(MovieDB::class.java).findAll()
+            allMovies.deleteAllFromRealm()
         realm.commitTransaction()
     }
 
+    //---------------------------------------------READ-----------------------------------------------------------
     fun mostraFilmesDB(): ArrayList<Movie> {
         val config = RealmConfiguration.Builder()
                 .name("movie.realm")
@@ -45,6 +81,17 @@ class movieCRUD {
 
         return list
     }
+
+    fun mostraFilmesDBFavoritos(): ArrayList<Movie> {
+        val config = RealmConfiguration.Builder()
+                .name("FilmesFavoritos.realm")
+                .build()
+        val realm = Realm.getInstance(config)
+        val allMovies = realm.where(MovieDB::class.java).findAll()
+        val list: ArrayList<Movie> = MovieMapper().mapperMovieDB(allMovies)
+        return list
+    }
+
 
     fun mostraFilmeDetalhe(id_Movie : Int): Movie{
         val config = RealmConfiguration.Builder()

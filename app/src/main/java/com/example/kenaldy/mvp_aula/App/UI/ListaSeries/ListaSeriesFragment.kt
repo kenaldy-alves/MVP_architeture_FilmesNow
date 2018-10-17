@@ -67,11 +67,6 @@ class ListaSeriesFragment : Fragment(), MVP_ListaSeriesContract.ListaSeriesView 
         recyclerFilmes.layoutManager = layoutManager
     }
 
-
-    override fun mostraErroConexao() {
-        Snackbar.make(minha_recyclerViewSeries, "Sem conexão", Snackbar.LENGTH_SHORT).show()
-    }
-
     override fun mostraErro() {
         Toast.makeText(contextFragment,"Erro!!! Falha na obtenção da lista", Toast.LENGTH_SHORT).show()
     }

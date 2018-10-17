@@ -6,7 +6,6 @@ interface MVP_ListaSeriesContract {
     interface ListaSeriesView{
         fun mostraErro()
         fun mostraSeries(series: List<Serie>)
-        fun mostraErroConexao()
     }
 
     interface ListaSeriesPresenter{

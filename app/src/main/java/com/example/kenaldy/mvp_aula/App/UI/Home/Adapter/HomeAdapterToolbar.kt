@@ -2,6 +2,7 @@ package com.example.kenaldy.mvp_aula.App.UI.Home.Adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
+import com.example.kenaldy.mvp_aula.App.UI.Favoritos.FilmesFavoritosFragment
 import com.example.kenaldy.mvp_aula.App.UI.ListaFilmesPopulares.ListaFilmesPopularesFragment
 import com.example.kenaldy.mvp_aula.App.UI.ListaSeries.ListaSeriesFragment
 
@@ -20,11 +21,14 @@ class HomeAdapterToolbar(fragment: android.support.v4.app.FragmentManager): Frag
             var fragment = ListaFilmesPopularesFragment()
             return fragment
         }
-           else{
+           else if (position == 1){
             var fragment = ListaSeriesFragment()
             return fragment
         }
-
+        else{
+            var fragment = FilmesFavoritosFragment()
+            return fragment
+        }
     }
 
     override fun getCount(): Int {
