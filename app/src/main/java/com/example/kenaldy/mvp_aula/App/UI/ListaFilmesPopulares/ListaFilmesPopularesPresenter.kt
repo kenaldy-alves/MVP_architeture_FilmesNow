@@ -34,7 +34,7 @@ class ListaFilmesPopularesPresenter(private var view: MVP_Contract.ListaFilmesPo
                 showProgressBar.value = false
                 if (response != null) {
                     if (response.isSuccessful)
-                        response?.body()?.let {
+                        response.body()?.let {
                             val newMovieList: JsonResponseMoviePopular = it
                             val list: ArrayList<Movie>? = MovieMapper().mapperMovie(newMovieList.results)
                             view?.mostraFilmes(list!!)

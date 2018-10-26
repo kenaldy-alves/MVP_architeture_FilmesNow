@@ -26,21 +26,21 @@ class SerieDetalhesPresenter(private var view: SerieDetailsContract.SerieDetalhe
         call.enqueue(object: Callback<JsonResponseSerieDetails> {
             override fun onFailure(call: Call<JsonResponseSerieDetails>?, t: Throwable?) {
                 showProgressBar.value = false
-                view?.mostraSerie(serieCRUD().mostraSerieDetalhe(id))
+                view.mostraSerie(serieCRUD().mostraSerieDetalhe(id))
             }
 
             override fun onResponse(call: Call<JsonResponseSerieDetails>?, response: Response<JsonResponseSerieDetails>?) {
                 showProgressBar.value = false
                 if (response != null) {
                     if (response.isSuccessful)
-                        response?.body()?.let {
+                        response.body()?.let {
                             val movieDetails: JsonResponseSerieDetails = it
                             val serie : Serie = SerieDetailsMapper().MapperSerieDetails(movieDetails)
                             view.mostraSerie(serie)
                         }
                 }
                 else
-                    view?.mostraSerie(serieCRUD().mostraSerieDetalhe(id))
+                    view.mostraSerie(serieCRUD().mostraSerieDetalhe(id))
             }
 
         })

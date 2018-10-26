@@ -1,20 +1,17 @@
 package com.example.kenaldy.mvp_aula.App.Data
 
-import android.util.Log
 import com.example.kenaldy.mvp_aula.App.Data.Mapper.MovieDetailsMapper
 import com.example.kenaldy.mvp_aula.App.Data.Mapper.MovieMapper
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.MovieDB
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
-import com.squareup.picasso.Picasso
 import io.realm.Realm
 import io.realm.RealmConfiguration
-import java.io.File
 
 class movieCRUD {
     //---------------------------------------------CREATE------------------------------------------------------------
     fun addFilmeDataBase(movie: Movie) {
         val config = RealmConfiguration.Builder()
-                .name("movie.realm")
+                .name("Movie.realm")
                 .build()
         val realm = Realm.getInstance(config)
 
@@ -29,7 +26,7 @@ class movieCRUD {
 
     fun addFavoritosDataBase(movie: Movie): Boolean {
         val config = RealmConfiguration.Builder()
-                .name("FilmesFavoritos.realm")
+                .name("filmesFavoritos.realm")
                 .build()
         val realm = Realm.getInstance(config)
         val filme = realm.where(MovieDB::class.java).equalTo("id", movie.id).findFirst()
@@ -60,7 +57,7 @@ class movieCRUD {
     //-------------------------------------------DELETE--------------------------------------------------------------
     fun deleteFilmeDataBase(){
         val config = RealmConfiguration.Builder()
-                .name("movie.realm")
+                .name("Movie.realm")
                 .build()
         val realm = Realm.getInstance(config)
 
@@ -73,7 +70,7 @@ class movieCRUD {
     //---------------------------------------------READ-----------------------------------------------------------
     fun mostraFilmesDB(): ArrayList<Movie> {
         val config = RealmConfiguration.Builder()
-                .name("movie.realm")
+                .name("Movie.realm")
                 .build()
         val realm = Realm.getInstance(config)
         val allMovies = realm.where(MovieDB::class.java).findAll()
@@ -84,7 +81,7 @@ class movieCRUD {
 
     fun mostraFilmesDBFavoritos(): ArrayList<Movie> {
         val config = RealmConfiguration.Builder()
-                .name("FilmesFavoritos.realm")
+                .name("filmesFavoritos.realm")
                 .build()
         val realm = Realm.getInstance(config)
         val allMovies = realm.where(MovieDB::class.java).findAll()
@@ -95,10 +92,10 @@ class movieCRUD {
 
     fun mostraFilmeDetalhe(id_Movie : Int): Movie{
         val config = RealmConfiguration.Builder()
-                .name("movie.realm")
+                .name("Movie.realm")
                 .build()
         val realm = Realm.getInstance(config)
-        val Movie = realm.where(MovieDB::class.java).equalTo("id",id_Movie).findAll()
+        val Movie = realm.where(MovieDB::class.java).equalTo("id",id_Movie).findFirst()
         val list = MovieDetailsMapper().mapperMovieDetailsDB(Movie)
 
         return list

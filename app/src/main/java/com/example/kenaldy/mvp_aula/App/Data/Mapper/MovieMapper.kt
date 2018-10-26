@@ -15,7 +15,7 @@ class MovieMapper {
         for (lista in listMovie){
             val filme = Movie(lista.id, lista.original_title, lista.overview, lista.poster_path)
             movieCRUD().addFilmeDataBase(filme)
-            movieList?.add(filme)
+            movieList.add(filme)
         }
         return movieList
     }
@@ -26,7 +26,7 @@ class MovieMapper {
         for (lista in listMovie){
             Log.e(lista.title, lista.id.toString())
             val filme = Movie(lista.id, lista.title, lista.overview, lista.poster_path)
-            movieList?.add(filme)
+            movieList.add(filme)
         }
         return movieList
     }

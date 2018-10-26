@@ -43,6 +43,7 @@ class FilmesDetalhesActivity : AppCompatActivity(), mvpContractDetailsMovie.Movi
     override fun mostraFilmes(filme: Movie) {
         titulo_filmes_detalhes.text = filme.title
         descricao.text = filme.overview
+
         Picasso.get().load("https://image.tmdb.org/t/p/w500/" + filme.poster_path).into(imageView_filme_detalhes)
 
 
@@ -63,10 +64,12 @@ class FilmesDetalhesActivity : AppCompatActivity(), mvpContractDetailsMovie.Movi
         presenter.showProgressBar.observe(this, object : Observer<Boolean> {
             override fun onChanged(showprogressBar: Boolean?) {
                 if(showprogressBar?:false){
+                    fab.visibility = View.GONE
                     details_progressBar.visibility = View.VISIBLE
                 }
                 else{
                     details_progressBar.visibility = View.GONE
+                    fab.visibility = View.VISIBLE
                 }
             }
         })

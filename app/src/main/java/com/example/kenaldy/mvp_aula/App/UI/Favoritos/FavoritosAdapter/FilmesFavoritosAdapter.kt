@@ -43,7 +43,7 @@ class FilmesFavoritosAdapter: RecyclerView.Adapter<FilmesFavoritosViewHolder>() 
     override fun onBindViewHolder(holder: FilmesFavoritosViewHolder, position: Int) {
         val lista = newListMovie
 
-        holder?.let {
+        holder.let {
             it.textFilmes.text = lista!![position].title
             Picasso.get().load("https://image.tmdb.org/t/p/w500/" + lista[position].poster_path).into(it.imageFilme)
             it.cardView.setOnClickListener {

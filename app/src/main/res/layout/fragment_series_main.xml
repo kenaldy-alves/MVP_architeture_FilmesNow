@@ -15,20 +15,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="4dp"
-            android:elevation="5dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+
         <ProgressBar
             android:id="@+id/progressBarSerie"
-            android:background="@android:color/background_light"
             style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/background_light"
             android:padding="150dp"
             android:visibility="visible" />
+
+
     </android.support.v4.widget.SwipeRefreshLayout>
+
 
 </android.support.constraint.ConstraintLayout>

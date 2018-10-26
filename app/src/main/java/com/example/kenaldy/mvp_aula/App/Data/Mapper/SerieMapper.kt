@@ -28,7 +28,7 @@ class SerieMapper {
         for (lista in listSerie){
             Log.e(lista.title, lista.id.toString())
             val serie = Serie(lista.id, lista.title, lista.overview, lista.poster_path)
-            serieList?.add(serie)
+            serieList.add(serie)
         }
         return serieList
     }

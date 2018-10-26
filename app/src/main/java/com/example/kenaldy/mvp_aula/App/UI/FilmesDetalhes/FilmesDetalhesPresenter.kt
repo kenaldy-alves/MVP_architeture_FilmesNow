@@ -1,6 +1,7 @@
 package com.example.kenaldy.mvp_aula.App.UI.FilmesDetalhes
 
 import android.arch.lifecycle.MutableLiveData
+import android.util.Log
 import com.example.kenaldy.mvp_aula.App.Data.movieCRUD
 import com.example.kenaldy.mvp_aula.App.Data.Mapper.MovieDetailsMapper
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
@@ -18,30 +19,30 @@ class FilmesDetalhesPresenter(private var view: mvpContractDetailsMovie.MovieDet
         this.view = view
     }
 
-    override fun getMovieDetailsRequisition(id_Movie: Int) {
+    override fun getMovieDetailsRequisition(id_movie: Int) {
 
         this.showProgressBar.value = true
 
-        val call = RetrofitInializer().listMovieService().getMovieDetails(id_Movie,"ad756a6a2bf1e24028a941c80255bff5")
+        val call = RetrofitInializer().listMovieService().getMovieDetails(id_movie)
 
         call.enqueue(object: Callback<JsonResponseMovieDetails>{
             override fun onFailure(call: Call<JsonResponseMovieDetails>?, t: Throwable?) {
                 showProgressBar.value = false
-                view?.mostraFilmes(movieCRUD().mostraFilmeDetalhe(id_Movie))
+                view.mostraFilmes(movieCRUD().mostraFilmeDetalhe(id_movie))
             }
 
             override fun onResponse(call: Call<JsonResponseMovieDetails>?, response: Response<JsonResponseMovieDetails>?) {
                 showProgressBar.value = false
                 if (response != null) {
                     if (response.isSuccessful)
-                        response?.body()?.let {
+                        response.body()?.let {
                             val movieDetails: JsonResponseMovieDetails = it
                             val movie : Movie = MovieDetailsMapper().MapperMovieDetails(movieDetails)
                             view.mostraFilmes(movie)
                         }
                 }
                 else
-                    view?.mostraFilmes(movieCRUD().mostraFilmeDetalhe(id_Movie))
+                    view.mostraFilmes(movieCRUD().mostraFilmeDetalhe(id_movie))
             }
 
         })

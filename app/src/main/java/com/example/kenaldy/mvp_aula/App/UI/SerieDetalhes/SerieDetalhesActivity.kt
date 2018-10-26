@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.activity_filmes_home.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 import kotlinx.android.synthetic.main.activity_serie_detalhes.*
-import kotlinx.android.synthetic.main.fragment_filmes_home.*
 
 class SerieDetalhesActivity : AppCompatActivity(), SerieDetailsContract.SerieDetalhesView {
     private val KEY_SERIE : String = "serie"

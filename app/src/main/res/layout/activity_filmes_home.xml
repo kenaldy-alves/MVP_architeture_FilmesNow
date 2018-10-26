@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,37 +7,40 @@
     android:background="@android:color/background_light"
     tools:context=".App.UI.Home.HomeActivity"
     tools:layout_editor_absoluteY="25dp">
-
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/minhs_toolbar"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/holo_red_dark"
-        android:elevation="4dp"
-        android:theme="@style/Base.ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="#FFFFFFFf"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="59dp"
-        tools:targetApi="lollipop"></android.support.v7.widget.Toolbar>
+        android:layout_height="wrap_content">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#B22222"
-        app:layout_constraintTop_toBottomOf="@+id/minhs_toolbar"
-        app:tabGravity="fill"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="@android:color/holo_orange_light"
-        app:tabTextColor="#FFFAFA"
-        tools:layout_editor_absoluteX="0dp"></android.support.design.widget.TabLayout>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/minhs_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#FF0000"
+            android:elevation="4dp"
+            android:theme="@style/Base.ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="#FFFFFFFf"
+            app:layout_scrollFlags="scroll|enterAlways"
+            tools:targetApi="lollipop"></android.support.v7.widget.Toolbar>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#FF0000"
+            app:layout_constraintTop_toBottomOf="@+id/minhs_toolbar"
+            app:tabGravity="fill"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@android:color/holo_orange_light"
+            app:tabTextColor="#FFFAFA"></android.support.design.widget.TabLayout>
+
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="2dp"
         android:layout_marginLeft="2dp"
@@ -45,11 +48,5 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="2dp"
         android:background="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabs"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints"></android.support.v4.view.ViewPager>
-</android.support.constraint.ConstraintLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"></android.support.v4.view.ViewPager>
+</android.support.design.widget.CoordinatorLayout>

@@ -16,7 +16,7 @@ interface WebServices {
 
     @GET("movie/{movie_id}")
     fun getMovieDetails(@Path("movie_id") id_movie: Int,
-                        @Query("api_key") api_key: String,
+                        @Query("api_key") api_key: String = "ad756a6a2bf1e24028a941c80255bff5",
                         @Query("language") language: String = "pt-BR"): Call<JsonResponseMovieDetails>
 
     @GET("tv/popular?")

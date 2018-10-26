@@ -15,7 +15,7 @@ class serieCRUD {
 
     fun addSerieDataBase(serie: Serie){
         val config = RealmConfiguration.Builder()
-                .name("serie.realm")
+                .name("Series.realm")
                 .build()
         val realm = Realm.getInstance(config)
 
@@ -30,7 +30,7 @@ class serieCRUD {
 
     fun deleteSerieDataBase(){
         val config = RealmConfiguration.Builder()
-                .name("serie.realm")
+                .name("Series.realm")
                 .build()
         val realm = Realm.getInstance(config)
 
@@ -43,7 +43,7 @@ class serieCRUD {
 
     fun mostraSerieDB(): ArrayList<Serie> {
         val config = RealmConfiguration.Builder()
-                .name("serie.realm")
+                .name("Series.realm")
                 .build()
         val realm = Realm.getInstance(config)
         val allSeries = realm.where(SerieDB::class.java).findAll()
@@ -54,7 +54,7 @@ class serieCRUD {
 
     fun mostraSerieDetalhe(id_Serie : Int): Serie {
         val config = RealmConfiguration.Builder()
-                .name("serie.realm")
+                .name("Series.realm")
                 .build()
         val realm = Realm.getInstance(config)
         val Serie = realm.where(SerieDB::class.java).equalTo("id",id_Serie).findAll()

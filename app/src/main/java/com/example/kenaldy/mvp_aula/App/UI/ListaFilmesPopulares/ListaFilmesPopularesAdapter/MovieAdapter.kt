@@ -41,11 +41,11 @@ class MovieAdapter(): RecyclerView.Adapter<MovieViewHolder>() {
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val lista = newListMovie
 
-        holder?.let {
+        holder.let {
                 Picasso.get().load("https://image.tmdb.org/t/p/w500/" + lista!![position].poster_path).into(it.imageFilme)
                       it.cardView.setOnClickListener{
                 if(context is HomeActivity){
-                    (context as HomeActivity).navigationMovieDetails(lista!![position])
+                    (context as HomeActivity).navigationMovieDetails(lista[position])
                 }
             }
         }

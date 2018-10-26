@@ -3,6 +3,7 @@ package com.example.kenaldy.mvp_aula.App.UI.Home
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Movies.Movie
 import com.example.kenaldy.mvp_aula.App.Data.Objects.Series.Serie
@@ -11,6 +12,7 @@ import com.example.kenaldy.mvp_aula.App.UI.Home.Adapter.HomeAdapterToolbar
 import com.example.kenaldy.mvp_aula.App.UI.SerieDetalhes.SerieDetalhesActivity
 import com.example.kenaldy.mvp_aula.R
 import kotlinx.android.synthetic.main.activity_filmes_home.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeActivity : AppCompatActivity(), HomeContractActivity.HomeActivityView{
 
